@@ -43,6 +43,7 @@ public class QueryProcessorTest {
   @Test
   public void square() {
     assertThat(queryProcessor.process("Which of the following numbers is both a square and a cube: 64, 1024, 2998, 1765, 4058, 3375, 975?"), containsString("64"));
+    assertThat(queryProcessor.process("Which of the following numbers is both a square and a cube: 1, 400, 4223, 1987, 680, 939, 64?"), containsString("1,64"));
   }
 
   @Test
@@ -53,5 +54,10 @@ public class QueryProcessorTest {
   @Test
   public void primes() {
     assertThat(queryProcessor.process("Which of the following numbers are primes: 93, 76, 7, 71, 8?"), containsString("7,71"));
+  }
+
+  @Test
+  public void power() {
+    assertThat(queryProcessor.process("What is 22 to the power of 6?"), containsString("113379904"));
   }
 }

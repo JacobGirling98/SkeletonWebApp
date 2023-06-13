@@ -1,5 +1,6 @@
 package com.develogical;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
@@ -80,6 +81,13 @@ public class QueryProcessor {
       }).collect(Collectors.toList());
 
       return answers.stream().map(x -> x.toString()).collect(Collectors.joining(",", "", ""));
+    }
+
+    else if (query.toLowerCase().contains("power of")) {
+      String[] split = query.replace("?", "").split(" to the power of ");
+      int first = Integer.parseInt(split[0].split("What is ")[1]);
+      int second = Integer.parseInt(split[1]);
+      return new BigDecimal(Math.pow(first, second)).toPlainString();
     }
 
 
