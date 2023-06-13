@@ -39,4 +39,9 @@ public class QueryProcessorTest {
   public void multiplying() {
     assertThat(queryProcessor.process("What is 53 multiplied by 27?"), containsString("1431"));
   }
+
+  @Test
+  public void square() {
+    assertThat(queryProcessor.process("Which of the following numbers is both a square and a cube: 64, 1024, 2998, 1765, 4058, 3375, 975?"), containsString("64"));
+  }
 }

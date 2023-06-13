@@ -44,6 +44,21 @@ public class QueryProcessor {
       return String.valueOf(firstNum * secondNum);
     }
 
+    else if (query.toLowerCase().contains("square and a cube")) {
+      String numbers = query.replace("?", "").split(":")[1];
+      String[] nums = numbers.split(",");
+      List<Integer> ints = Arrays.stream(nums).map(n -> Integer.parseInt(n.trim())).collect(Collectors.toList());
+      Collections.sort(ints);
+
+      List<Integer> answers = ints.stream().filter(s -> {
+        double square = Math.pow(s, 0.5);
+        double cube = Math.cbrt(s);
+        return square % 1 == 0 && cube % 1 == 0;
+      }).collect(Collectors.toList());
+
+      return answers.stream().map(x -> x.toString()).collect(Collectors.joining(",", "", ""));
+    }
+
     return "";
   }
 }
