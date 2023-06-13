@@ -30,6 +30,13 @@ public class QueryProcessor {
       return ints.get(ints.size() - 1).toString();
     }
 
+    else if (query.toLowerCase().contains("plus")) {
+      String[] split = query.replace("?", "").split("plus");
+      int firstNum = Integer.parseInt(split[0].split("What is ")[1].trim());
+      int secondNum = Integer.parseInt(split[1].trim());
+      return String.valueOf(firstNum + secondNum);
+    }
+
     return "";
   }
 }

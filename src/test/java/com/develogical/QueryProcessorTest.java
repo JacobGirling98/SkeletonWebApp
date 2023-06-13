@@ -29,4 +29,9 @@ public class QueryProcessorTest {
   public void largestNumber() {
     assertThat(queryProcessor.process("Which of the following numbers is the largest: 6, 81, 66?"), containsString("81"));
   }
+
+  @Test
+  public void adding() {
+    assertThat(queryProcessor.process("What is 68 plus 88?"), containsString("156"));
+  }
 }
