@@ -1,22 +1,22 @@
-package com.develogical
+package com.develogical;
 
-import org.hamcrest.CoreMatchers.containsString
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.MatcherAssert.assertThat
-import org.junit.Test
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-class QueryProcessorTest {
-    var queryProcessor = QueryProcessor()
+import org.junit.Test;
 
-    @Test
-    @Throws(Exception::class)
-    fun returnsEmptyStringIfCannotProcessQuery() {
-        assertThat(queryProcessor.process("test"), `is`(""))
-    }
+public class QueryProcessorTest {
 
-    @Test
-    @Throws(Exception::class)
-    fun knowsAboutShakespeare() {
-        assertThat(queryProcessor.process("Shakespeare"), containsString("playwright"))
-    }
+  QueryProcessor queryProcessor = new QueryProcessor();
+
+  @Test
+  public void returnsEmptyStringIfCannotProcessQuery() throws Exception {
+    assertThat(queryProcessor.process("test"), is(""));
+  }
+
+  @Test
+  public void knowsAboutShakespeare() throws Exception {
+    assertThat(queryProcessor.process("Shakespeare"), containsString("playwright"));
+  }
 }
