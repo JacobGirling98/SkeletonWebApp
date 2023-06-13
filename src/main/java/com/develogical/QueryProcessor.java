@@ -37,6 +37,13 @@ public class QueryProcessor {
       return String.valueOf(firstNum + secondNum);
     }
 
+    else if (query.toLowerCase().contains("multiplied")) {
+      String[] split = query.replace("?", "").split("multiplied by");
+      int firstNum = Integer.parseInt(split[0].split("What is ")[1].trim());
+      int secondNum = Integer.parseInt(split[1].trim());
+      return String.valueOf(firstNum * secondNum);
+    }
+
     return "";
   }
 }
