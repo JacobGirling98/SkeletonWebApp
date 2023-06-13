@@ -1,5 +1,6 @@
 package com.develogical;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -65,6 +66,23 @@ public class QueryProcessor {
 
       return answers.stream().map(x -> x.toString()).collect(Collectors.joining(",", "", ""));
     }
+
+    else if (query.toLowerCase().contains("primes")) {
+      String numbers = query.replace("?", "").split(":")[1];
+      String[] nums = numbers.split(",");
+      List<Integer> ints = Arrays.stream(nums).map(n -> Integer.parseInt(n.trim())).collect(Collectors.toList());
+      Collections.sort(ints);
+
+      List<Integer> answers = ints.stream().filter(s -> {
+        BigInteger bigInt = BigInteger.valueOf(s);
+        return bigInt.isProbablePrime(100);
+
+      }).collect(Collectors.toList());
+
+      return answers.stream().map(x -> x.toString()).collect(Collectors.joining(",", "", ""));
+    }
+
+
 
     return "";
   }

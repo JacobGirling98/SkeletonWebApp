@@ -49,4 +49,9 @@ public class QueryProcessorTest {
   public void minus() {
     assertThat(queryProcessor.process("What is 79 minus 30?"), containsString("49"));
   }
+
+  @Test
+  public void primes() {
+    assertThat(queryProcessor.process("Which of the following numbers are primes: 93, 76, 7, 71, 8?"), containsString("7,71"));
+  }
 }
