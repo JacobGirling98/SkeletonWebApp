@@ -44,4 +44,9 @@ public class QueryProcessorTest {
   public void square() {
     assertThat(queryProcessor.process("Which of the following numbers is both a square and a cube: 64, 1024, 2998, 1765, 4058, 3375, 975?"), containsString("64"));
   }
+
+  @Test
+  public void minus() {
+    assertThat(queryProcessor.process("What is 79 minus 30?"), containsString("49"));
+  }
 }
